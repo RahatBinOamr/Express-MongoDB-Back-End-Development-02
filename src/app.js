@@ -7,5 +7,5 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/v1/book", router);
+app.use("/api/v1/books", router);
 module.exports = app;
