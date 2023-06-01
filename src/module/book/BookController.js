@@ -26,9 +26,12 @@ exports.getBooksToDb = async (req, res) => {
   try {
     const books = await getBooks();
     res.status(200).json({
-      status: "success",
-      message: "Books get successfully",
-      data: books,
+      status: books?.length > 0 ? "success" : "false",
+      message:
+        books?.length > 0
+          ? "Books data get successfully"
+          : "books data not found!!!",
+      data: books?.length >= 0 ? books : [],
     });
   } catch (err) {
     res.status(400).json({
@@ -40,11 +43,13 @@ exports.getBooksToDb = async (req, res) => {
 exports.getSingleBookToDb = async (req, res) => {
   try {
     const { id } = req.params;
-    const books = await getSingleBook({ _id: id });
+    const book = await getSingleBook({ _id: id });
     res.status(200).json({
       status: "success",
-      message: "Books get successfully",
-      data: books,
+      message: book?._id
+        ? "book data get successfully"
+        : "book data not found!! may be deleted",
+      data: book?._id ? book : "book data not found",
     });
   } catch (err) {
     res.status(400).json({
