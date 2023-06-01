@@ -40,7 +40,7 @@ exports.getBooksToDb = async (req, res) => {
 exports.getSingleBookToDb = async (req, res) => {
   try {
     const { id } = req.params;
-    const books = await getSingleBook({ id });
+    const books = await getSingleBook({ _id: id });
     res.status(200).json({
       status: "success",
       message: "Books get successfully",

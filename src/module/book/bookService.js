@@ -9,7 +9,7 @@ exports.getBooks = async () => {
   return books;
 };
 exports.getSingleBook = async (id) => {
-  const books = await Book.findOne({ _id: id });
+  const books = await Book.findOne(id);
   return books;
 };
 
